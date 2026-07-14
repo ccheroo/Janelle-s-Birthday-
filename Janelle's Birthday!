@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Ja! 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Quicksand',sans-serif;
+background:linear-gradient(135deg,#ffe6f2,#fff5fa,#ffeef5);
+overflow:hidden;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+/* Floating Hearts */
+.hearts{
+position:absolute;
+width:100%;
+height:100%;
+overflow:hidden;
+pointer-events:none;
+}
+
+.heart{
+position:absolute;
+font-size:25px;
+animation:float 10s linear infinite;
+opacity:.7;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh) rotate(0deg);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(-120vh) rotate(360deg);
+opacity:0;
+}
+}
+
+.container{
+text-align:center;
+z-index:2;
+}
+
+h1{
+font-family:'Pacifico',cursive;
+color:#ff5d9e;
+margin-bottom:15px;
+font-size:3rem;
+text-shadow:2px 2px white;
+}
+
+.subtitle{
+color:#666;
+margin-bottom:30px;
+font-size:18px;
+}
+
+/* Envelope */
+
+.envelope{
+width:240px;
+height:160px;
+margin:auto;
+position:relative;
+cursor:pointer;
+transition:.4s;
+animation:bounce 2s infinite;
+}
+
+.envelope:hover{
+transform:scale(1.08);
+}
+
+@keyframes bounce{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-12px);
+}
+}
+
+.back{
+position:absolute;
+width:100%;
+height:100%;
+background:#ffb6d5;
+border-radius:10px;
+}
+
+.flap{
+position:absolute;
+top:0;
+left:0;
+width:0;
+height:0;
+border-left:120px solid transparent;
+border-right:120px solid transparent;
+border-top:90px solid #ff8fbe;
+transform-origin:top;
+transition:1s;
+z-index:4;
+}
+
+.letter{
+position:absolute;
+left:15px;
+top:15px;
+width:210px;
+height:130px;
+background:white;
+border-radius:8px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:20px;
+color:#ff5d9e;
+font-weight:bold;
+transition:1s;
+z-index:2;
+}
+
+.envelope.open .flap{
+transform:rotateX(180deg);
+}
+
+.envelope.open .letter{
+transform:translateY(-180px);
+}
+
+/* Popup */
+
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+width:90%;
+max-width:700px;
+height:80%;
+background:white;
+border-radius:25px;
+padding:30px;
+overflow-y:auto;
+box-shadow:0 15px 40px rgba(0,0,0,.25);
+transition:.5s;
+z-index:100;
+}
+
+.popup.show{
+transform:translate(-50%,-50%) scale(1);
+}
+
+.popup h2{
+font-family:'Pacifico';
+color:#ff5d9e;
+text-align:center;
+margin-bottom:20px;
+}
+
+.popup p{
+line-height:1.9;
+font-size:17px;
+color:#555;
+white-space:pre-line;
+}
+
+.close{
+position:absolute;
+right:20px;
+top:15px;
+font-size:28px;
+cursor:pointer;
+color:#ff5d9e;
+}
+
+.footer{
+text-align:center;
+margin-top:30px;
+font-size:20px;
+color:#ff5d9e;
+font-weight:bold;
+}
+
+.sparkle{
+position:absolute;
+font-size:25px;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{
+opacity:.3;
+transform:scale(.8);
+}
+to{
+opacity:1;
+transform:scale(1.2);
+}
+}
+
+</style>
+</head>
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+    <source src="happybirthday.mp3" type="audio/mpeg">
+</audio>
+
+<div class="hearts"></div>
+
+<div class="sparkle" style="left:10%;top:15%;">✨</div>
+<div class="sparkle" style="right:15%;top:20%;">⭐</div>
+<div class="sparkle" style="left:20%;bottom:20%;">💖</div>
+<div class="sparkle" style="right:10%;bottom:10%;">✨</div>
+
+<div class="container">
+
+<h1>Happy Birthday Ja! 🎂</h1>
+<div class="subtitle">Click the envelope, my lovely sister. 💌</div>
+
+<div class="envelope" onclick="openLetter()" id="env">
+
+<div class="back"></div>
+<div class="letter">
+💖 Open Me 💖
+</div>
+<div class="flap"></div>
+
+</div>
+
+</div>
+
+<div class="popup" id="popup">
+
+<div class="close" onclick="closeLetter()">✖</div>
+
+<h2>To My Dearest Ja 💗</h2>
+
+<p>
+
+Hello, Ja! How are you? I just want to wish you a happy birthday. I know I already greeted you in our chat, but I wanted to greet you this way too.
+
+It’s been 3 years since I met you during our campaign—3 years na rin tayong magkaibigan, mag-sisters, and bffs. At first, akala ko hindi tayo magiging close, but I’m really grateful to the student council for letting me meet a wonderful soul like you.
+
+You’re one of the purest and most genuine friends I’ve ever had in my life. I’m just really glad and thankful for the memories, laughter, and happiness we’ve shared.
+
+Ja, bilang kaibigan mo, alam ko kung gaano at ano ang mga pinagdaraanan mo ngayon. Hindi mo man sabihin, hindi ko man makita, pero nararamdaman ko—kilala kita eh.
+
+I may not be by your side right now, but I want you to know that we’re here to hug and embrace you, even when it feels like the world is crashing down on you.
+
+I’m here not only as your bff or your sister, but as someone who shares the same struggles you’re facing.
+
+Sa haba ng taon na nakasama kita at nabati tuwing birthday mo, palagi at lagi kong hihilingin na makuha mo ang kaarawan na deserve mo.
+
+Kasi you deserve the same joy you share with others.
+
+I wish you a happy, happy birthday, Ja.
+
+Sobrang miss ka na namin.
+
+Gusto naming sumaya ka, kasi deserve at kailangan mo 'yun.
+
+Magpagaling ka, Jaja.
+
+Mag-iingat ka palagi.
+
+Happy, happy birthday, my ate! 💖
+
+</p>
+
+<div class="footer">
+Love always,<br>
+Your BFF 💕
+</div>
+
+</div>
+
+<script>
+
+function openLetter(){
+document.getElementById("env").classList.add("open");
+
+setTimeout(()=>{
+document.getElementById("popup").classList.add("show");
+},900);
+
+}
+
+function closeLetter(){
+document.getElementById("popup").classList.remove("show");
+}
+
+function createHeart(){
+
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML=["💖","🎂 ","💗","🎁 ","🌸","✨"][Math.floor(Math.random()*6)];
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=6+Math.random()*6+"s";
+heart.style.fontSize=(20+Math.random()*25)+"px";
+
+document.querySelector(".hearts").appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},12000);
+
+}
+
+setInterval(createHeart,500);
+
+</script>
+
+</body>
+</html>
